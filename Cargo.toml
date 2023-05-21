@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "memo",
+    "memo-derive"
+]
+exclude = [
+    "example",
+    "contoh"
+]

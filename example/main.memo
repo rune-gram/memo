@@ -1,0 +1,8 @@
+pakai []::coba;
+
+catat harga_belanja = "23000";
+angka kembalian = 12000;
+
+angka hasil = coba::tambahan(harga_belanja, kembalian);
+
+tulis(hasil);

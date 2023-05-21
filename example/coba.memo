@@ -1,0 +1,6 @@
+acuan tambahan(angka a, angka b)
+hasil!
+    angka
+{
+    hasil a+b;
+};
