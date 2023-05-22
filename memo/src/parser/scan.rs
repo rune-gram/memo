@@ -21,6 +21,11 @@ pub struct Scanner {
     line: usize,
 }
 
+// to determine operation for grouping the Char String/Number
+const OPERATORS:[u8;5] = [
+    61,126,60,62,59
+];
+
 impl Scanner {
     pub fn new(source: Vec<u8>) -> Scanner {
         Scanner {
@@ -116,12 +121,9 @@ impl Scanner {
                     Some(32) => { //< this is slash! idk but b'/' seems not working, but number works.
                         self.advance();
                         // problem :  this still make one line at the end of the comment
-                        // visible to next scanner,
+                        // visible to next scanner, this only occured when there is comment
+                        // if there is no comment, everything fine.
                         while self.forward_peek() != Some(10) && !self.is_at_end() {
-                            eprintln!("skipping on comment!, on char: {:?}, current pos : {:?}", 
-                                String::from_utf8(vec![self.forward_peek().unwrap()]),
-                                self.current
-                            );
                             self.advance();
                         }
                     },
@@ -162,7 +164,6 @@ impl Scanner {
             },
             (10,false)=>{}, // new line
             _ => {
-                eprintln!("c: {:?}", String::from_utf8(vec![c]));
                 if self.stringguard {
                     self.tokens.push(Token::CS(c));
                 }else{

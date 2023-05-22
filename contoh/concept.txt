@@ -1,0 +1,8 @@
+[concept -> scanner stratcher]
+    [SCAN By Token, Allocate]
+
+[concept -> allocation checker]
+    [ALLOC heap (BTreeMap)]
+    - [VSCAN -> allocate variable and calculate token]
+    - [FSCAN -> future scan to check is there any more variable assigned in current + c(n)]
+    - [DSCAN -> delete used variable to free up upper heap, except for the cached one]
