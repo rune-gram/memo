@@ -1,6 +1,6 @@
 mod vms;
 mod parser;
-mod instructions;
+mod engine;
 
 use std::io::Read;
 
