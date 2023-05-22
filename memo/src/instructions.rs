@@ -14,11 +14,15 @@ impl Instructions {
 
     }
 
-    pub fn sub(&mut self) {
+    pub fn subtract(&mut self) {
 
     }
 
-    pub fn mul(&mut self) {
+    pub fn multiply(&mut self) {
+
+    }
+
+    pub fn divide(&mut self){
 
     }
 

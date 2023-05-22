@@ -1,4 +1,4 @@
-use crate::token::Tokens;
+use super::token::Tokens;
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum Token {

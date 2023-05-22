@@ -1,5 +1,4 @@
-mod token;
-mod scanner;
+mod parser;
 mod instructions;
 
 use std::io::Read;
@@ -17,7 +16,7 @@ fn main() {
     let mut file = std::fs::File::open(name).unwrap();
     let mut contents = Vec::new();
     file.read_to_end(&mut contents).unwrap();
-    let mut scanner = scanner::Scanner::new(contents);
+    let mut scanner = parser::scan::Scanner::new(contents);
     let scanned = scanner.scan_tokens();
     println!("{:?}", scanned);
 }
