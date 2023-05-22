@@ -12,7 +12,7 @@ pub enum Tokens {
     ImporTutup, // ]
     Koma, // ,
     Titik, // .
-    GarisMiring, // /
+    Bagi, // /
     Bintang, // *
     Tanya, // ?
     Petik, // "
@@ -29,6 +29,7 @@ pub enum Tokens {
     LebihSama, // >=
     Konektor, // ::
     ImporLokal, // []
+    Comment, // //
 
     // reserved tokens
     Buat, // let 

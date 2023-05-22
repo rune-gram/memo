@@ -1,3 +1,4 @@
+mod vms;
 mod parser;
 mod instructions;
 

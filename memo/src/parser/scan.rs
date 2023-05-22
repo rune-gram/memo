@@ -110,6 +110,26 @@ impl Scanner {
                     }
                 }
             },
+            (b'/', false) => {
+                let next_char = self.forward_peek();
+                match next_char {
+                    Some(32) => { //< this is slash! idk but b'/' seems not working, but number works.
+                        self.advance();
+                        // problem :  this still make one line at the end of the comment
+                        // visible to next scanner,
+                        while self.forward_peek() != Some(10) && !self.is_at_end() {
+                            eprintln!("skipping on comment!, on char: {:?}, current pos : {:?}", 
+                                String::from_utf8(vec![self.forward_peek().unwrap()]),
+                                self.current
+                            );
+                            self.advance();
+                        }
+                    },
+                    _ => {
+                        self.add_token_tmp(Tokens::Bagi);
+                    }
+                }
+            }
             (b'{',false) => {
                 self.add_token_tmp(Tokens::KurawalBuka);
             }
@@ -142,6 +162,7 @@ impl Scanner {
             },
             (10,false)=>{}, // new line
             _ => {
+                eprintln!("c: {:?}", String::from_utf8(vec![c]));
                 if self.stringguard {
                     self.tokens.push(Token::CS(c));
                 }else{
