@@ -1,1 +1,5 @@
-=~<>;
+// this is the problem
+catat a = "oke"; // comment ini juga problem
+angka y = 1;
+
+// comment di akhir file tidak.
