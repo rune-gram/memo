@@ -1,7 +1,6 @@
 mod vms;
 mod parser;
 mod engine;
-
 use std::io::Read;
 
 
@@ -15,9 +14,10 @@ fn main() {
     if ext != "memo" {panic!("File extension must be .memo");}
     // load file bytecode
     let mut file = std::fs::File::open(name).unwrap();
-    let mut contents = Vec::new();
-    file.read_to_end(&mut contents).unwrap();
-    let mut scanner = parser::scan::Scanner::new(contents);
-    let scanned = scanner.scan_tokens();
-    println!("{:?}", scanned);
+    // let mut contents = Vec::new();
+    // file.read_to_end(&mut contents).unwrap();
+    // read file as text
+    let mut contents = String::new();
+    file.read_to_string(&mut contents).unwrap();
+    parser::scan::Scans::new(contents).start();
 }
